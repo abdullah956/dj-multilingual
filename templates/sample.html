@@ -1,0 +1,19 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% trans "Simple Template" %}</title>
+</head>
+<body>
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit()">
+            <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+            <option value="es" {% if LANGUAGE_CODE == 'es' %}selected{% endif %}>Spanish</option>
+            <!-- Add more languages as needed -->
+        </select>
+    </form>
+    <h1>{% trans "Hello, World!" %}</h1>
+    <p>{% trans "This is a simple Django template." %}</p>
+</body>
+</html>
